@@ -13,13 +13,13 @@ function send() {
         method: 'POST',
         body: formData
     })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            console.log(data)
             data = data.result;
-
-            let str = "Distâncias entre os textos: " + data;
-            result.value = str;
+            result.value = "Distâncias entre os textos:\n";
+            result.value += "Distância: " + data.distance + "\n";
+            result.value += "Distância média: " + data.average + "\n";
+            result.value += "Distância máxima: " + data.max;
         })
         .catch(error => {
             console.error('Erro:', error);

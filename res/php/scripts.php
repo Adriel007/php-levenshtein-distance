@@ -7,7 +7,7 @@ error_reporting(0);
 if (isset($_FILES['file'])) {
     $tmp = $_FILES['file']['tmp_name'];
     $content = json_decode(file_get_contents($tmp), true);
-    $jsonResult = json_encode(['result' => distance('maca', 'vaca')], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $jsonResult = json_encode(['result' => distance($content['str1'], $content['str2'])], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     if ($jsonResult === false)
         echo json_encode(['error' => json_last_error_msg()], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -18,6 +18,5 @@ if (isset($_FILES['file'])) {
 
 function distance($str1, $str2)
 {
-    $levenshteinDistance = new LevenshteinDistance();
-    return $levenshteinDistance->levenshteinDistance($str1, $str2);
+    return LevenshteinDistance($str1, $str2);
 }
