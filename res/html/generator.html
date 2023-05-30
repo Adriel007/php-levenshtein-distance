@@ -11,24 +11,12 @@
 
 <body>
     <h2>Textos:</h2>
-    <div class="div-textareas">
-        <div>
-            <textarea placeholder="Insira um texto para o agrupamento..."></textarea>
-            <textarea placeholder="Insira um texto para o agrupamento..."></textarea>
-        </div>
-        <div>
-            <button onclick="removeTextArea()">-</button>
-            <button onclick="newTextArea()">+</button>
-        </div>
+    <div>
+        <textarea placeholder="Insira um texto para a comparação..."></textarea>
+        <textarea placeholder="Insira um texto para a comparação..."></textarea>
     </div>
     <textarea readonly placeholder="Resultado..."></textarea>
-
-    <h2>Configurações:</h2>
-    <div class="div-classify">
-        <h3>Valor de K:</h3>
-        <input type="number" placeholder="Ex: 2" min="2" value="2" id="k">
-        <button onclick="send()">Agrupar</button>
-    </div>
+    <button onclick="send()">Comparar</button>
 
 </body>
 

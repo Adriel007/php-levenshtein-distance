@@ -1,14 +1,10 @@
 function send() {
     const result = document.querySelector("textarea[readonly]");
-    const k = document.getElementById("k").value;
 
     const json = {
-        array: [],
-        k: k | 2
+        str1: document.querySelectorAll("div textarea")[0].value,
+        str2: document.querySelectorAll("div textarea")[1].value,
     };
-
-    for (const textarea of document.querySelectorAll(".div-textareas div")[0].children)
-        json.array.push(textarea.value);
 
     const file = new Blob([JSON.stringify(json)], { type: 'application/json;charset=utf-8' });
     const formData = new FormData();
@@ -17,34 +13,15 @@ function send() {
         method: 'POST',
         body: formData
     })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
+            console.log(data)
             data = data.result;
-            let str = "Agrupamentos:\n";
 
-            for (const key in data) {
-                let aux = "\n\t- ";
-                aux += data[key].join("\n\t- ");
-                str += `${key}: ${aux};\n\n`;
-            }
-
+            let str = "Distâncias entre os textos: " + data;
             result.value = str;
         })
         .catch(error => {
             console.error('Erro:', error);
         });
-}
-
-function newTextArea() {
-    const container = document.querySelectorAll(".div-textareas div")[0];
-    const textarea = document.createElement("textarea");
-    textarea.placeholder = "Insira um texto para o agrupamento...";
-    container.appendChild(textarea);
-}
-
-function removeTextArea() {
-    const container = document.querySelectorAll(".div-textareas div")[0];
-
-    if (container.children.length > 2)
-        container.children[container.children.length - 1].remove();
 }
