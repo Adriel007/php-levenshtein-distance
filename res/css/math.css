@@ -23,6 +23,13 @@ p {
     font-size: large;
 }
 
+
+ul,
+ol {
+    margin: 10px;
+    margin-left: 50px;
+}
+
 div {
     display: flex;
     flex-direction: row;

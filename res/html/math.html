@@ -9,27 +9,61 @@
 
 <body>
     <p>
-        Dado um conjunto de observações ( x<sub>1</sub> , x<sub>2</sub> , ..., x<sub>n</sub> ), onde cada observação é
-        um vetor real d -dimensional, o agrupamento k -means visa particionar as n observações em <i>k (≤ n )</i>
-        conjuntos S = { S<sub>1</sub> , S<sub>2</sub> , ..., S<sub>k</sub> } de modo a minimizar a soma dos quadrados
-        dentro do cluster (WCSS) (ou seja, variância). Formalmente, o objetivo é encontrar:
+        Dada uma cadeia de caracteres A de comprimento m e uma cadeia de caracteres B de comprimento n, a distância de
+        Levenshtein, denotada como D(A, B), pode ser calculada usando uma matriz de tamanho (m+1) x (n+1).
     </p>
     <p>
-        O termo " k -means" foi usado pela primeira vez por James MacQueen em 1967, embora a ideia remonte a Hugo
-        Steinhaus em 1956. O algoritmo padrão foi proposto pela primeira vez por Stuart Lloyd, do Bell Labs , em
-        1957, como uma técnica para modulação de código de pulso , embora não tenha sido publicado como um artigo de
-        jornal até 1982. Em 1965, Edward W. Forgy publicou essencialmente o mesmo método, razão pela qual às vezes é
-        referido como o algoritmo de Lloyd-Forgy.
+        Na matriz, cada célula (i, j) representa a distância de edição entre os primeiros i caracteres da cadeia A e os
+        primeiros j caracteres da cadeia B. Para calcular essa matriz, são seguidas as seguintes regras:
+    <ol>
+        <li>
+            Inicialização: A primeira coluna (coluna 0) representa a distância entre uma cadeia vazia e os prefixos de
+            B. Assim, a célula (i, 0) é igual a i, para i variando de 0 a m.
+        </li>
+        <li>
+            A primeira linha (linha 0) representa a distância entre os prefixos de A e uma cadeia vazia. Assim, a célula
+            (0, j) é igual a j, para j variando de 0 a n.
+        </li>
+        <li>
+            Preenchimento: Para preencher as demais células da matriz, segue-se a seguinte regra:
+            <ul>
+                <li>
+                    Se o caractere A[i-1] for igual ao caractere B[j-1], a célula (i, j) recebe o valor da célula (i-1,
+                    j-1).
+                </li>
+                <li>
+                    Caso contrário, a célula (i, j) recebe o valor mínimo entre:
+                    <ol type="a">
+                        <li>
+                            O valor da célula à esquerda (i, j-1) + 1 (representando a inserção de um caractere em A).
+                        </li>
+                        <li>
+                            O valor da célula acima (i-1, j) + 1 (representando a remoção de um caractere de A).
+                        </li>
+                        <li>
+                            O valor da célula diagonal superior esquerda (i-1, j-1) + 1 (representando a substituição de
+                            um caractere em A).
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </li>
+        <li>
+            O valor final da distância de Levenshtein é dado pela célula (m, n) da matriz.
+        </li>
+    </ol>
     </p>
 
     <div>
-        <img src="https://miro.medium.com/v2/resize:fit:960/0*FBFDk2FPSMaXAV6x.gif">
-        <img src="https://alumni.media.mit.edu/~tpminka/courses/36-350.2001/lectures/day9/lecture9.png">
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Levenshtein_distance_animation.gif/400px-Levenshtein_distance_animation.gif">
+        <img style="background-color: #fff;"
+            src="https://wikimedia.org/api/rest_v1/media/math/render/svg/efbf653f8a0a02b9e345f0070785893b5e7bcc16">
 
     </div>
     <h4>Fontes:</h4>
     <cite>
-        https://en.wikipedia.org/wiki/K-means_clustering
+        https://en.wikipedia.org/wiki/Levenshtein_distance
     </cite>
 </body>
 
