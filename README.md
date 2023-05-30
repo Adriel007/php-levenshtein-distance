@@ -1,4 +1,4 @@
-# Projeto de Demonstração da Distância de Levenshtein em PHP (Em produção)
+# Projeto de Demonstração da Distância de Levenshtein em PHP
 
 Este projeto tem como objetivo demonstrar a utilização da distância de Levenshtein para medir a diferença entre duas sequências de caracteres. A distância de Levenshtein é uma medida comumente usada em áreas como processamento de linguagem natural, edição de texto e correção ortográfica.
 
